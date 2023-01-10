@@ -17,10 +17,7 @@ class AuthScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
-                ],
+                colors: [Colors.black, Colors.blue],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 stops: [0, 1],
@@ -40,11 +37,9 @@ class AuthScreen extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 20.0),
                       padding:
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0), // used to rotate container
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
+                        color: Colors.deepPurple,
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,
@@ -54,7 +49,7 @@ class AuthScreen extends StatelessWidget {
                         ],
                       ),
                       child: Text(
-                        'MyShop',
+                        'Shopified',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 50,
@@ -95,7 +90,6 @@ class _AuthCardState extends State<AuthCard>
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   AnimationController? _controller;
-  // Animation<Size>? _heightAnimation;
   Animation<double>? _opacityAnimation;
 
   @override
@@ -103,12 +97,6 @@ class _AuthCardState extends State<AuthCard>
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    // _heightAnimation = Tween<Size>(
-    // begin: Size(double.infinity, 260), end: Size(double.infinity, 320))
-    // .animate(CurvedAnimation(parent: _controller!, curve: Curves.easeIn));
-    // _heightAnimation!.addListener(() {
-    //   setState(() {});
-    // });
     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0)
         .animate(CurvedAnimation(parent: _controller!, curve: Curves.easeIn));
   }
@@ -169,7 +157,7 @@ class _AuthCardState extends State<AuthCard>
       _showErrorDialog(errorMessage);
     } catch (e) {
       const errorMessage =
-          'Could not authenticate you. Pleasee try again later.';
+          'Could not authenticate you. Please try again later.';
       _showErrorDialog(errorMessage);
     }
 
@@ -204,9 +192,6 @@ class _AuthCardState extends State<AuthCard>
         duration: Duration(milliseconds: 300),
         curve: Curves.fastLinearToSlowEaseIn,
         height: _authMode == AuthMode.SignUp ? 320 : 260,
-        // constraints: BoxConstraints(
-        //   minHeight: _authMode == AuthMode.SignUp ? 320 : 260,
-        // ),
         width: deviceSize.width * 0.75,
         padding: EdgeInsets.all(16.0),
         child: Form(
@@ -290,6 +275,3 @@ class _AuthCardState extends State<AuthCard>
     );
   }
 }
-
-
-

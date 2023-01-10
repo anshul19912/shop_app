@@ -48,16 +48,16 @@ class MyApp extends StatelessWidget {
           builder: (ctx, auth, _) => MaterialApp(
             // whenever the auth change this will rebuild
             debugShowCheckedModeBanner: false,
-            title: 'MyShop',
+            title: 'Shopified',
             theme: ThemeData(
-                primarySwatch: Colors.purple,
+                primarySwatch: Colors.deepPurple,
                 accentColor: Colors.deepOrange,
                 fontFamily: 'Lato',
-                pageTransitionsTheme: PageTransitionsTheme(builders: { // to apply fade transition to every pages
+                pageTransitionsTheme: PageTransitionsTheme(builders: {
+                  // to apply fade transition to every pages
                   TargetPlatform.android: CustomPageTransitionBuilder()
-                })
-                ),
-                
+                })),
+
             home: auth.isAuth
                 ? ProductsOverviewScreen()
                 : FutureBuilder(

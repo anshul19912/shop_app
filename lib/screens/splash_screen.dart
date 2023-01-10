@@ -4,7 +4,12 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Loading')),
+      backgroundColor: Colors.black,
+      body: Center(
+          child: Text(
+        'Loading',
+        style: TextStyle(color: Colors.white),
+      )),
     );
   }
 }
