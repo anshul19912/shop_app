@@ -128,7 +128,7 @@ class Products with ChangeNotifier {
             id: prodId,
             title: prodData['title'],
             description: prodData['description'],
-            price: prodData['price'],
+            price: prodData['price'].toDouble(),
             imageUrl: prodData['imageUrl'],
             isFavorite:
                 favoriteData == null ? false : favoriteData[prodId] ?? false));
@@ -137,7 +137,6 @@ class Products with ChangeNotifier {
       notifyListeners();
     } catch (e) {
       log(e.toString());
-      throw e;
     }
   }
 }
